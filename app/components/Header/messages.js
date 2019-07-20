@@ -16,4 +16,10 @@ export default defineMessages({
     id: `${scope}.features`,
     defaultMessage: 'Features',
   },
+  slogans: {
+    id: `${scope}.slogans`,
+    defaultMessage: 'Slogans',
+    description:
+      'A list of marketing slogans using buzzwords. Data generated from Mockaroo.',
+  },
 });
