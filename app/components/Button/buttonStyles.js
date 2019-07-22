@@ -1,9 +1,12 @@
 import { css } from 'styled-components';
 
+const color = '#41addd';
+const background = 'transparent';
+
 const buttonStyles = css`
   display: inline-block;
   box-sizing: border-box;
-  padding: 0.25em 2em;
+  padding: '0.25em 2em';
   text-decoration: none;
   border-radius: 4px;
   -webkit-font-smoothing: antialiased;
@@ -14,12 +17,25 @@ const buttonStyles = css`
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: bold;
   font-size: 16px;
-  border: 2px solid #41addd;
-  color: #41addd;
+  border: 2px solid
+    ${props => (props.theme.background ? props.theme.background : background)};
+  background: ${props =>
+    props.theme.background ? props.theme.background : background};
+  color: ${props => (props.theme.color ? props.theme.color : color)};
+  box-shadow: -2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 
   &:active {
-    background: #41addd;
-    color: #fff;
+    background: ${props => (props.theme.color ? props.theme.color : color)};
+    color: ${props =>
+      props.theme.background ? props.theme.background : background};
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    background: ${props => (props.theme.color ? props.theme.color : color)};
+    color: ${props =>
+      props.theme.background ? props.theme.background : background};
   }
 `;
 
