@@ -1,8 +1,8 @@
 const express = require('express');
-const sloganRouter = require('./slogans');
+const slogans = require('./endpoints/slogans');
 
 const router = express.Router();
 
-router.use('/slogans', sloganRouter);
+router.use('/slogans', slogans);
 
 module.exports = router;
