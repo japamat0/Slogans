@@ -1,31 +1,49 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
-import A from './A';
-import Img from './Img';
+import Span from '../Span';
 import NavBar from './NavBar';
 import HeaderLink from './HeaderLink';
-import Banner from './banner.jpg';
 import messages from './messages';
+import Wrapper from './Wrapper';
+import BrandWrapper from './BrandWrapper';
 
 function Header() {
+  const brandTheme = {
+    color: '#fff',
+    background: '#2b5478',
+  };
+  const brandThemeTitle = {
+    fontSize: '2em',
+  };
+
+  const brandThemeSlogan = {
+    fontSize: '0.9em',
+    fontStyle: 'oblique',
+  };
+
   return (
-    <div>
-      <A href="https://www.reactboilerplate.com/">
-        <Img src={Banner} alt="react-boilerplate - Logo" />
-      </A>
+    <Wrapper theme={brandTheme}>
+      <BrandWrapper theme={brandTheme}>
+        <Span centered theme={{ ...brandTheme, ...brandThemeTitle }}>
+          <FormattedMessage {...messages.brandName} />
+        </Span>
+        <Span theme={{ ...brandTheme, ...brandThemeSlogan }}>
+          <FormattedMessage {...messages.brandSlogan} />
+        </Span>
+      </BrandWrapper>
       <NavBar>
-        <HeaderLink to="/">
+        <HeaderLink theme={brandTheme} to="/">
           <FormattedMessage {...messages.home} />
         </HeaderLink>
-        <HeaderLink to="/features">
-          <FormattedMessage {...messages.features} />
-        </HeaderLink>
-        <HeaderLink to="/slogans">
+        <HeaderLink theme={brandTheme} to="/slogans">
           <FormattedMessage {...messages.slogans} />
         </HeaderLink>
+        <HeaderLink theme={brandTheme} to="/slogans/add">
+          <FormattedMessage {...messages.addSlogans} />
+        </HeaderLink>
       </NavBar>
-    </div>
+    </Wrapper>
   );
 }
 

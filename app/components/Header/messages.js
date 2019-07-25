@@ -12,14 +12,27 @@ export default defineMessages({
     id: `${scope}.home`,
     defaultMessage: 'Home',
   },
-  features: {
-    id: `${scope}.features`,
-    defaultMessage: 'Features',
+  favorites: {
+    id: `${scope}.favorites`,
+    defaultMessage: 'Favorites',
+  },
+  brandName: {
+    id: `${scope}.brandName`,
+    defaultMessage: 'Slogans',
+  },
+  brandSlogan: {
+    id: `${scope}.brandName`,
+    defaultMessage: 'Buzzwordy marketing slogans!',
   },
   slogans: {
     id: `${scope}.slogans`,
     defaultMessage: 'Slogans',
     description:
       'A list of marketing slogans using buzzwords. Data generated from Mockaroo.',
+  },
+  addSlogans: {
+    id: `${scope}.addSlogans`,
+    defaultMessage: 'Add',
+    description: 'Add your own custom slogans!',
   },
 });
