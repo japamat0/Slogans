@@ -7,6 +7,8 @@ const pageNumberStyles = css`
   box-sizing: border-box;
   text-decoration: ${props => (props.active ? 'underline' : 'none')};
   font-weight: ${props => (props.active ? 'bold' : 'normal')};
+  padding: 0;
+  pointer-events: ${props => (props.disabled ? 'none' : 'auto')};
   border: none;
   background: transparent;
   -webkit-font-smoothing: antialiased;
@@ -15,7 +17,8 @@ const pageNumberStyles = css`
   cursor: pointer;
   outline: 0;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 1.5em;
+  font-size: 1em;
+  width: 2em;
   color: ${props => (props.color ? props.color : color)};
 `;
 

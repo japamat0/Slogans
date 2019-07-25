@@ -12,7 +12,7 @@ function PageNumber(props) {
 }
 
 PageNumber.propTypes = {
-  number: PropTypes.number.isRequired,
+  number: PropTypes.number,
 };
 
 export default PageNumber;
