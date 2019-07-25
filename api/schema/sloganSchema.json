@@ -17,6 +17,8 @@
     "text": {
       "$id": "#/properties/text",
       "type": "string",
+      "minLength": 1,
+      "maxLength": 75,
       "title": "The Text Schema",
       "default": "",
       "examples": ["transition synergistic schemas"],
