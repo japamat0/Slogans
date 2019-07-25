@@ -12,11 +12,18 @@ describe('<List />', () => {
 
   it('should pass all items props to rendered component', () => {
     const items = [{ id: 1, name: 'Hello' }, { id: 2, name: 'World' }];
+    const clickIcon = () => {};
+    const icon = () => <svg />;
 
-    const component = ({ item }) => <li>{item.name}</li>; // eslint-disable-line react/prop-types
+    const component = item => <li>{item.name}</li>; // eslint-disable-line react/prop-types
 
     const { container, getByText } = render(
-      <List items={items} component={component} />,
+      <List
+        items={items}
+        component={component}
+        icon={icon}
+        clickIcon={clickIcon}
+      />,
     );
     const elements = container.querySelectorAll('li');
     expect(elements).toHaveLength(2);
