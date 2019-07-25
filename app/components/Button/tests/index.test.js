@@ -50,10 +50,4 @@ describe('<Button />', () => {
     const { container } = renderComponent({ href, type });
     expect(container.querySelector(`a[type="${type}"]`)).toBeNull();
   });
-
-  it('should not adopt a type attribute when rendering a button', () => {
-    const type = 'submit';
-    const { container } = renderComponent({ handleRoute, type });
-    expect(container.querySelector('button').getAttribute('type')).toBeNull();
-  });
 });
