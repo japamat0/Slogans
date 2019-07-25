@@ -1,5 +1,6 @@
 /**
  * Helper functions to interact with the json file
+ * passing argunments to prettyprint json.
  */
 
 const fs = require('fs');
@@ -8,7 +9,7 @@ const jsonschema = require('jsonschema');
 const ExpressError = require('../errors/expressError');
 
 const writeJsonToFile = (path, data) => {
-  fs.writeFileSync(path, data, error => {
+  fs.writeFileSync(path, JSON.stringify(data, null, 2), error => {
     throw new ExpressError(error, 500);
   });
 };
