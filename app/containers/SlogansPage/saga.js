@@ -1,13 +1,18 @@
 import { takeEvery, call, put, all } from 'redux-saga/effects';
-import { FETCH_SLOGANS } from './constants';
-import { fetchSlogansSuccess } from './actions';
+import { FETCH_SLOGANS, FAVORITE_SLOGAN } from './constants';
+import {
+  fetchSlogansSuccess,
+  fetchSlogansError,
+  favoriteSloganSuccess,
+  favoriteSloganError,
+} from './actions';
 import request from '../../utils/request';
 import history from '../../utils/history';
 
 const BASE_URL = `http://localhost:3000`;
 
 /** WORKER SAGAS */
-function* getSlogansWorker(action) {
+export function* getSlogansWorker(action) {
   const { offset, limit } = action;
   const endpoint = `slogans?offset=${offset}&limit=${limit}`;
   const requestURL = `${BASE_URL}/api/${endpoint}`;
@@ -17,15 +22,30 @@ function* getSlogansWorker(action) {
     yield put(fetchSlogansSuccess(response.slogans, response.total));
     history.push(`/${endpoint}`);
   } catch (error) {
-    throw new Error('boop');
+    yield put(fetchSlogansError(error));
+  }
+}
+
+export function* favoriteSloganWorker(action) {
+  const { id, text } = action;
+  try {
+    yield put(favoriteSloganSuccess(id, text));
+  } catch (error) {
+    yield put(favoriteSloganError(error));
   }
 }
 
 /** WATCHER SAGAS */
-function* getSlogansWatcher() {
+export function* getSlogansWatcher() {
   yield takeEvery(FETCH_SLOGANS, getSlogansWorker);
 }
 
+export function* favoriteSlogansWatcher() {
+  yield takeEvery(FAVORITE_SLOGAN, favoriteSloganWorker);
+}
+
+/** ROOT SAGA */
+
 export default function* rootSloganSaga() {
-  yield all([getSlogansWatcher()]);
+  yield all([getSlogansWatcher(), favoriteSlogansWatcher()]);
 }
