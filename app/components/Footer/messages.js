@@ -15,7 +15,7 @@ export default defineMessages({
   builtBy: {
     id: `${scope}.author.message`,
     defaultMessage: `
-      Built by {name}.
+      Built by Jason Matthias. {repo}.
     `,
   },
   testDataMsg: {

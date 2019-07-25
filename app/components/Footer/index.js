@@ -12,7 +12,7 @@ function Footer() {
         <FormattedMessage
           {...messages.builtBy}
           values={{
-            name: <A href="https://github.com/japamat">Jason Matthias</A>,
+            repo: <A href="https://github.com/japamat">Check out the code</A>,
           }}
         />
       </section>
