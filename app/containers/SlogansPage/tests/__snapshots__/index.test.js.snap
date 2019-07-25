@@ -1,0 +1,160 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Slogans /> Should render and match the snapshot 1`] = `
+<div>
+  <h2
+    class="H2__StyledH2-egphza-0 iqErhy"
+  >
+    <span>
+      Check out these cool slogans
+    </span>
+  </h2>
+  <div
+    class="TogglerWrapper-sc-1mnngc-0 kulVuq"
+  >
+    <span
+      class="Span__StyledSpan-jqeibd-0 brtybx"
+    >
+      <span>
+        Show Favorites: 
+      </span>
+    </span>
+    <svg
+      class="StyledSVG__styledFavoriteIcon-e58rkq-0 cyIiAp"
+    >
+      <svg
+        height="24"
+        width="24"
+      >
+        <path
+          d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"
+        />
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+      </svg>
+    </svg>
+  </div>
+  <div>
+    <div
+      class="Wrapper-sc-1umgotm-0 cZQTKK"
+    >
+      <ul
+        class="Ul-mwnq6h-0 jcxXFy"
+      >
+        <li
+          class="Wrapper-euo0oy-0 eSOOBp"
+        >
+          <div
+            class="Item-sc-3y9mie-0 fKXSkT"
+          >
+            Oops, something went wrong!
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div
+      class="Wrapper-sc-1lznsvd-0 heLOpY"
+    >
+      <div
+        class="Wrapper-sc-5dsnpv-0 dFDEkS"
+      >
+        <button
+          class="StyledButton-t20ntd-0 WPTdm"
+          disabled=""
+        >
+          <svg
+            height="24"
+            style="transform: rotate(180deg);"
+            width="24"
+          >
+            <path
+              d="M5.88 4.12L13.76 12l-7.88 7.88L8 22l10-10L8 2z"
+            />
+            <path
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+          </svg>
+        </button>
+      </div>
+      <button
+        class="StyledPageNumber-i0djol-0 jfMZty"
+        color="#2b5478"
+      >
+        1
+      </button>
+      <button
+        class="StyledPageNumber-i0djol-0 fZKCDt"
+        color="#2b5478"
+      >
+        2
+      </button>
+      <button
+        class="StyledPageNumber-i0djol-0 fZKCDt"
+        color="#2b5478"
+      >
+        3
+      </button>
+      <button
+        class="StyledPageNumber-i0djol-0 fZKCDt"
+        color="#2b5478"
+      >
+        4
+      </button>
+      <button
+        class="StyledPageNumber-i0djol-0 fZKCDt"
+        color="#2b5478"
+      >
+        5
+      </button>
+      <button
+        class="StyledPageNumber-i0djol-0 fZKCDt"
+        color="#2b5478"
+      >
+        6
+      </button>
+      <button
+        class="StyledPageNumber-i0djol-0 fZKCDt"
+        color="#2b5478"
+      >
+        7
+      </button>
+      <button
+        class="StyledPageNumber-i0djol-0 fZKCDt"
+        color="#2b5478"
+      >
+        8
+      </button>
+      <button
+        class="StyledPageNumber-i0djol-0 fZKCDt"
+        color="#2b5478"
+      >
+        9
+      </button>
+      <div
+        class="Wrapper-sc-5dsnpv-0 dFDEkS"
+      >
+        <button
+          class="StyledButton-t20ntd-0 WPTdm"
+          disabled=""
+        >
+          <svg
+            height="24"
+            width="24"
+          >
+            <path
+              d="M5.88 4.12L13.76 12l-7.88 7.88L8 22l10-10L8 2z"
+            />
+            <path
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
