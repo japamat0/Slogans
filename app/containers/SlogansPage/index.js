@@ -53,6 +53,7 @@ export function SlogansPage(props) {
   const parsedQueryString = qs.parse(props.location.search);
   let { offset } = parsedQueryString;
   const { limit } = parsedQueryString;
+
   if (offset < 0) offset = 0;
 
   useInjectReducer({ key, reducer });

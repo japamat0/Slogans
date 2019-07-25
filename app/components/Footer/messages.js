@@ -13,7 +13,7 @@ export default defineMessages({
     defaultMessage: 'This project is licensed under the MIT license.',
   },
   builtBy: {
-    id: `${scope}.author.message`,
+    id: `${scope}.builtBy.message`,
     defaultMessage: `
       Built by Jason Matthias. {repo}.
     `,
