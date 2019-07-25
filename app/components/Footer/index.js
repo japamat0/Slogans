@@ -2,7 +2,6 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import A from 'components/A';
-import LocaleToggle from 'containers/LocaleToggle';
 import Wrapper from './Wrapper';
 import messages from './messages';
 
@@ -10,16 +9,18 @@ function Footer() {
   return (
     <Wrapper>
       <section>
-        <FormattedMessage {...messages.licenseMessage} />
-      </section>
-      <section>
-        <LocaleToggle />
+        <FormattedMessage
+          {...messages.builtBy}
+          values={{
+            name: <A href="https://github.com/japamat">Jason Matthias</A>,
+          }}
+        />
       </section>
       <section>
         <FormattedMessage
-          {...messages.authorMessage}
+          {...messages.testDataMsg}
           values={{
-            author: <A href="https://twitter.com/mxstbr">Max Stoiber</A>,
+            source: <A href="https://mockaroo.com/">Mockaroo</A>,
           }}
         />
       </section>

@@ -12,10 +12,16 @@ export default defineMessages({
     id: `${scope}.license.message`,
     defaultMessage: 'This project is licensed under the MIT license.',
   },
-  authorMessage: {
+  builtBy: {
     id: `${scope}.author.message`,
     defaultMessage: `
-      Made with love by {author}.
+      Built by {name}.
+    `,
+  },
+  testDataMsg: {
+    id: `${scope}.test-data.message`,
+    defaultMessage: `
+      Mock data generated from {source}.
     `,
   },
 });
