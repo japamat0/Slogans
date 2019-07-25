@@ -7,11 +7,17 @@ import Wrapper from './Wrapper';
 function List(props) {
   const ComponentToRender = props.component;
   let content = <div />;
-
   // If we have items, render them
   if (props.items) {
+    const { clickIcon } = props;
     content = props.items.map(item => (
-      <ComponentToRender key={`item-${item.id}`} item={item.text} />
+      <ComponentToRender
+        key={`item-${item.id}`}
+        item={item.text}
+        {...item}
+        clickIcon={clickIcon}
+        icon={props.icon}
+      />
     ));
   } else {
     // Otherwise render a single component
@@ -28,6 +34,8 @@ function List(props) {
 List.propTypes = {
   component: PropTypes.elementType.isRequired,
   items: PropTypes.array,
+  icon: PropTypes.func,
+  clickIcon: PropTypes.func,
 };
 
 export default List;
