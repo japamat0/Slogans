@@ -28,3 +28,4 @@ You can get started by forking the repo and running `npm install`.
 - Search functionality.
 - Give users the ability to email their favorite slogans to themselves or a friend.
 - "Favorite added" and "Favorite Removed" messages.
+- Refactor backend call and store to store more slogans on client and send less requests to the backend.
