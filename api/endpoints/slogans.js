@@ -48,8 +48,9 @@ router.post('/', (req, res, next) => {
     const { slogan } = req.body;
     jsonHelper.validate(slogan, sloganSchema);
     slogan.id = uuidv4();
+
     slogans = [slogan, ...slogans];
-    jsonHelper.write(DEFAULT_DATA_PATH, JSON.stringify(slogans, null, 2));
+    jsonHelper.write(DEFAULT_DATA_PATH, slogans);
     return res
       .status(201)
       .json({ message: 'Slogan successfully created', slogan });
@@ -82,7 +83,7 @@ router.put('/', (req, res, next) => {
     slogans = slogans.map(sloganObj =>
       sloganObj.id === id ? { ...sloganObj, text } : sloganObj,
     );
-    jsonHelper.write(DEFAULT_DATA_PATH, JSON.stringify(slogans, null, 2));
+    jsonHelper.write(DEFAULT_DATA_PATH, slogans);
     return res
       .status(200)
       .json({ message: 'Slogan successfully updated', slogan });
@@ -122,7 +123,7 @@ router.delete('/', (req, res, next) => {
       },
     );
     slogans = reducedSlogans.filtered;
-    jsonHelper.write(DEFAULT_DATA_PATH, JSON.stringify(slogans, null, 2));
+    jsonHelper.write(DEFAULT_DATA_PATH, slogans);
     return res.status(200).json({
       message: 'Slogan successfully deleted',
       slogan: reducedSlogans.deleted,
