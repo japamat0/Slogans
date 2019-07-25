@@ -10,10 +10,10 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
 import { Switch, Route } from 'react-router-dom';
+import { Redirect } from 'react-router';
 
-import HomePage from 'containers/HomePage/Loadable';
-import FeaturePage from 'containers/FeaturePage/Loadable';
 import SlogansPage from 'containers/SlogansPage/Loadable';
+import SlogansFormPage from 'containers/SloganFormPage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
@@ -29,24 +29,35 @@ const AppWrapper = styled.div`
   flex-direction: column;
 `;
 
+const BodyWrapper = styled.div`
+  background-color: #e3e3e3;
+  width: 100%;
+  height: 100%;
+`;
+
 export default function App() {
   return (
-    <AppWrapper>
-      <Helmet
-        titleTemplate="%s - React.js Boilerplate"
-        defaultTitle="React.js Boilerplate"
-      >
-        <meta name="description" content="A React.js Boilerplate application" />
-      </Helmet>
+    <BodyWrapper>
       <Header />
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/features" component={FeaturePage} />
-        <Route path="/slogans" component={SlogansPage} />
-        <Route path="" component={NotFoundPage} />
-      </Switch>
-      <Footer />
-      <GlobalStyle />
-    </AppWrapper>
+      <AppWrapper>
+        <Helmet
+          titleTemplate="%s - React.js Boilerplate"
+          defaultTitle="React.js Boilerplate"
+        >
+          <meta
+            name="description"
+            content="A React.js Boilerplate application"
+          />
+        </Helmet>
+        <Switch>
+          <Route exact path="/slogans" component={SlogansPage} />
+          <Route exact path="/slogans/add" component={SlogansFormPage} />
+          <Redirect to="/slogans" />
+          <Route path="" component={NotFoundPage} />
+        </Switch>
+        <Footer />
+        <GlobalStyle />
+      </AppWrapper>
+    </BodyWrapper>
   );
 }
