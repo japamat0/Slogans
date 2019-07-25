@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Paginator /> Should render and match the snapshot 1`] = `
+<div
+  class="Wrapper-sc-1lznsvd-0 heLOpY"
+>
+  <div
+    class="Wrapper-sc-5dsnpv-0 dFDEkS"
+  >
+    <button
+      class="StyledButton-t20ntd-0 jLhOfj"
+    >
+      <svg
+        height="24"
+        style="transform: rotate(180deg);"
+        width="24"
+      >
+        <path
+          d="M5.88 4.12L13.76 12l-7.88 7.88L8 22l10-10L8 2z"
+        />
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+      </svg>
+    </button>
+  </div>
+  <div
+    class="Wrapper-sc-5dsnpv-0 dFDEkS"
+  >
+    <button
+      class="StyledButton-t20ntd-0 jLhOfj"
+    >
+      <svg
+        height="24"
+        width="24"
+      >
+        <path
+          d="M5.88 4.12L13.76 12l-7.88 7.88L8 22l10-10L8 2z"
+        />
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+      </svg>
+    </button>
+  </div>
+</div>
+`;

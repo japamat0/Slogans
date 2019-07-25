@@ -1,6 +1,8 @@
 /**
  *
  * Paginator
+ * Takes the total number of results, results offset, limit,
+ * onClick function, and theme as props.
  *
  */
 
@@ -10,46 +12,30 @@ import { ThemeProvider } from 'styled-components';
 
 import Wrapper from './Wrapper';
 import Button from '../Button';
-import PageNumber from '../PageNumber';
+import ArrowIcon from '../ArrowIcon';
+import { pagesToShow } from './helpers';
 
 function Paginator(props) {
-  const { total, offset, limit, onClick, theme } = props;
-
-  const buttons = [];
-  for (let i = 0; i < total - limit + 1; i += limit) {
-    buttons.push(
-      <PageNumber
-        onClick={() => onClick(i, limit)}
-        color={theme.background}
-        number={i / limit}
-        active={offset === i}
-        key={`page-number-${i / limit}`}
-      />,
-    );
-  }
-  // return buttons;
-  // const makeIndexButtons = () => {
-  // };
+  const { total, offset, limit, onClick, theme, showPageNums } = props;
+  const pageNums = showPageNums
+    ? pagesToShow(total, offset, limit, onClick, theme)
+    : null;
 
   return (
-    /**
-     * arrow left and arrow right on ends, which move offset by step
-     * map of buttons in the middle
-     */
     <ThemeProvider theme={theme}>
       <Wrapper>
         <Button
           disabled={offset === 0}
-          handleRoute={() => onClick(offset - limit, limit)}
+          handleRoute={() => onClick(Math.max(0, offset - limit), limit)}
         >
-          back
+          <ArrowIcon style={{ transform: 'rotate(180deg)' }} />
         </Button>
-        {buttons}
+        {pageNums}
         <Button
           disabled={offset >= total - limit}
           handleRoute={() => onClick(offset + limit, limit)}
         >
-          next
+          <ArrowIcon />
         </Button>
       </Wrapper>
     </ThemeProvider>
@@ -57,11 +43,12 @@ function Paginator(props) {
 }
 
 Paginator.propTypes = {
-  total: PropTypes.number.isRequired,
-  offset: PropTypes.number.isRequired,
-  limit: PropTypes.number.isRequired,
-  onClick: PropTypes.func.isRequired,
+  total: PropTypes.number,
+  offset: PropTypes.number,
+  limit: PropTypes.number,
+  onClick: PropTypes.func,
   theme: PropTypes.object,
+  showPageNums: PropTypes.bool,
 };
 
 export default Paginator;
