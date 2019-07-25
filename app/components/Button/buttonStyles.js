@@ -1,6 +1,7 @@
 import { css } from 'styled-components';
 
 const color = '#41addd';
+const border = '#41addd';
 const background = 'transparent';
 
 const buttonStyles = css`
@@ -18,24 +19,21 @@ const buttonStyles = css`
   font-weight: bold;
   font-size: 16px;
   border: 2px solid
-    ${props => (props.theme.background ? props.theme.background : background)};
-  background: ${props =>
-    props.theme.background ? props.theme.background : background};
+    ${props => (props.theme.border ? props.theme.border : border)};
+  background: ${props => (props.theme.bg ? props.theme.bg : background)};
   color: ${props => (props.theme.color ? props.theme.color : color)};
   box-shadow: -2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 
   &:active {
     background: ${props => (props.theme.color ? props.theme.color : color)};
-    color: ${props =>
-      props.theme.background ? props.theme.background : background};
+    color: ${props => (props.theme.bg ? props.theme.bg : background)};
   }
 
   &:disabled {
     cursor: not-allowed;
     opacity: 0.5;
     background: ${props => (props.theme.color ? props.theme.color : color)};
-    color: ${props =>
-      props.theme.background ? props.theme.background : background};
+    color: ${props => (props.theme.bg ? props.theme.bg : background)};
   }
 `;
 
