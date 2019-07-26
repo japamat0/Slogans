@@ -25,8 +25,11 @@ const DEFAULT_DATA_PATH = `api/data/defaultSlogans.json`;
 router.get('/', (req, res, next) => {
   try {
     const { offset, limit } = req.query;
-    const response = slogans.slice(+offset, +offset + +limit);
-    return res.json({ total: slogans.length, slogans: response });
+    const total = slogans.length;
+    const start = +offset || 0;
+    const end = start + +limit || total;
+    const repsonse = slogans.slice(start, end);
+    return res.json({ total, slogans: repsonse });
   } catch (error) {
     return next(error);
   }
