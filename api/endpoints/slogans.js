@@ -24,11 +24,17 @@ const DEFAULT_DATA_PATH = `api/data/defaultSlogans.json`;
 
 router.get('/', (req, res, next) => {
   try {
-    const { offset, limit } = req.query;
+    const { offset, limit, search } = req.query;
+    const cleanSearch = search.toLowerCase();
+    const tempSlogans = search
+      ? slogans.filter(slogan => slogan.text.toLowerCase().match(cleanSearch))
+      : slogans;
+
+    // handle no offset or limit provided
     const total = slogans.length;
     const start = +offset || 0;
     const end = start + +limit || total;
-    const repsonse = slogans.slice(start, end);
+    const repsonse = tempSlogans.slice(start, end);
     return res.json({ total, slogans: repsonse });
   } catch (error) {
     return next(error);
