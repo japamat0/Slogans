@@ -25,7 +25,7 @@ const DEFAULT_DATA_PATH = `api/data/defaultSlogans.json`;
 router.get('/', (req, res, next) => {
   try {
     const { offset, limit, search } = req.query;
-    const cleanSearch = search.toLowerCase();
+    const cleanSearch = search ? search.toLowerCase() : '';
     const tempSlogans = search
       ? slogans.filter(slogan => slogan.text.toLowerCase().match(cleanSearch))
       : slogans;
