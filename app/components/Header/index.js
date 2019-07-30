@@ -33,7 +33,7 @@ function Header() {
         </Span>
       </BrandWrapper>
       <NavBar>
-        <HeaderLink theme={brandTheme} to="?offset=0&limit=10">
+        <HeaderLink theme={brandTheme} to="/slogans">
           <FormattedMessage {...messages.slogans} />
         </HeaderLink>
         <HeaderLink theme={brandTheme} to="/slogans/add">

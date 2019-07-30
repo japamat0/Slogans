@@ -11,7 +11,6 @@ import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-import qs from 'query-string';
 
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
@@ -22,11 +21,17 @@ import {
   makeSelectSloganLoading,
   makeSelectSloganError,
   makeSelectShowFavorites,
+  makeSelectApiParams,
 } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
-import { fetchSlogans, favoriteSlogan, toggleFavorites } from './actions';
+import {
+  fetchSlogans,
+  favoriteSlogan,
+  toggleFavorites,
+  updateViewSlogans,
+} from './actions';
 import TogglerWrapper from './TogglerWrapper';
 import FavoriteIcon from '../../components/FavoriteIcon';
 import Paginator from '../../components/Paginator';
@@ -42,25 +47,22 @@ export function SlogansPage(props) {
     onFravoriteSlogan,
     onFetchSlogans,
     onToggleFavorite,
+    onUpdateViewSlogans,
     slogans,
     favorited,
     total,
     loading,
     error,
     showFavorites,
+    apiParams,
   } = props;
-
-  const parsedQueryString = qs.parse(props.location.search);
-  let { offset } = parsedQueryString;
-  const { limit } = parsedQueryString;
-
-  if (offset < 0) offset = 0;
 
   useInjectReducer({ key, reducer });
   useInjectSaga({ key, saga });
 
-  useEffect((queryOffset = offset || 0, queryLimit = limit || 10) => {
-    onFetchSlogans(queryOffset, queryLimit);
+  useEffect(() => {
+    const { reqOffset, reqLimit } = props;
+    onFetchSlogans(reqOffset, reqLimit);
   }, []);
 
   const toggleFavoriteProps = {
@@ -84,12 +86,12 @@ export function SlogansPage(props) {
   };
 
   const paginatorProps = {
-    limit: +limit,
-    offset: +offset,
+    limit: apiParams.viewLimit,
+    offset: apiParams.viewOffset,
     total,
     step: 10,
     theme: paginatorTheme,
-    onClick: onFetchSlogans,
+    onClick: onUpdateViewSlogans,
     showPageNums: true,
   };
 
@@ -124,6 +126,7 @@ SlogansPage.propTypes = {
   onFetchSlogans: PropTypes.func.isRequired,
   onFravoriteSlogan: PropTypes.func.isRequired,
   onToggleFavorite: PropTypes.func.isRequired,
+  onUpdateViewSlogans: PropTypes.func.isRequired,
   slogans: PropTypes.array.isRequired,
   favorited: PropTypes.array.isRequired,
   location: PropTypes.object.isRequired,
@@ -131,9 +134,11 @@ SlogansPage.propTypes = {
   loading: PropTypes.bool.isRequired,
   error: PropTypes.any,
   showFavorites: PropTypes.bool.isRequired,
+  apiParams: PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({
+  apiParams: makeSelectApiParams(),
   slogans: makeSelectSlogans(),
   total: makeSelectSloganLength(),
   favorited: makeSelectFavoritedSlogans(),
@@ -145,6 +150,8 @@ const mapStateToProps = createStructuredSelector({
 export function mapDispatchToProps(dispatch) {
   return {
     onFetchSlogans: (offset, limit) => dispatch(fetchSlogans(offset, limit)),
+    onUpdateViewSlogans: (offset, limit) =>
+      dispatch(updateViewSlogans(offset, limit)),
     onFravoriteSlogan: (id, text) => dispatch(favoriteSlogan(id, text)),
     onToggleFavorite: () => dispatch(toggleFavorites()),
   };

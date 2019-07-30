@@ -11,15 +11,20 @@ import {
   FETCH_SLOGANS,
   FAVORITE_SLOGAN_ERROR,
   TOGGLE_SHOW_FAVORITES,
+  UPDATE_VIEW_SLOGANS_SUCCESS,
 } from './constants';
 
 export const initialState = {
   error: false,
-  loading: false,
+  loading: true,
   slogans: [],
   favoritedSlogans: [],
   total: 0,
   showFavorites: false,
+  reqOffset: 0,
+  reqLimit: 100,
+  viewOffset: 0,
+  viewLimit: 10,
 };
 
 /* eslint-disable default-case, no-param-reassign */
@@ -70,6 +75,10 @@ const slogansReducer = (state = initialState, action) =>
 
       case TOGGLE_SHOW_FAVORITES:
         draft.showFavorites = !state.showFavorites;
+        break;
+
+      case UPDATE_VIEW_SLOGANS_SUCCESS:
+        draft.viewOffset = action.offset;
         break;
     }
   });

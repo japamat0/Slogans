@@ -12,10 +12,24 @@ import {
   FAVORITE_SLOGAN_SUCCESS,
   FAVORITE_SLOGAN_ERROR,
   TOGGLE_SHOW_FAVORITES,
+  UPDATE_VIEW_SLOGANS,
+  UPDATE_VIEW_SLOGANS_SUCCESS,
 } from './constants';
 
 export const fetchSlogans = (offset, limit) => ({
   type: FETCH_SLOGANS,
+  offset,
+  limit,
+});
+
+export const updateViewSlogans = (offset, limit) => ({
+  type: UPDATE_VIEW_SLOGANS,
+  offset,
+  limit,
+});
+
+export const updateViewSlogansSuccess = (offset, limit) => ({
+  type: UPDATE_VIEW_SLOGANS_SUCCESS,
   offset,
   limit,
 });
