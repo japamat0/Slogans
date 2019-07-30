@@ -12,6 +12,7 @@ import {
   FAVORITE_SLOGAN_ERROR,
   TOGGLE_SHOW_FAVORITES,
   UPDATE_VIEW_SLOGANS_SUCCESS,
+  UPDATE_REQ_PARAMS,
 } from './constants';
 
 export const initialState = {
@@ -37,7 +38,7 @@ const slogansReducer = (state = initialState, action) =>
         break;
 
       case FETCH_SLOGANS_SUCCESS:
-        draft.slogans = action.slogans;
+        draft.slogans = [...state.slogans, ...action.slogans];
         draft.total = action.total;
         draft.loading = false;
         break;
@@ -79,6 +80,10 @@ const slogansReducer = (state = initialState, action) =>
 
       case UPDATE_VIEW_SLOGANS_SUCCESS:
         draft.viewOffset = action.offset;
+        break;
+
+      case UPDATE_REQ_PARAMS:
+        draft.reqOffset = action.reqOffset;
         break;
     }
   });

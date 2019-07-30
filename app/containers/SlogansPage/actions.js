@@ -14,6 +14,7 @@ import {
   TOGGLE_SHOW_FAVORITES,
   UPDATE_VIEW_SLOGANS,
   UPDATE_VIEW_SLOGANS_SUCCESS,
+  UPDATE_REQ_PARAMS,
 } from './constants';
 
 export const fetchSlogans = (offset, limit) => ({
@@ -22,10 +23,16 @@ export const fetchSlogans = (offset, limit) => ({
   limit,
 });
 
-export const updateViewSlogans = (offset, limit) => ({
+export const updateViewSlogans = (offset, limit, reqParams) => ({
   type: UPDATE_VIEW_SLOGANS,
   offset,
   limit,
+  reqParams,
+});
+
+export const updateReqParams = reqOffset => ({
+  type: UPDATE_REQ_PARAMS,
+  reqOffset,
 });
 
 export const updateViewSlogansSuccess = (offset, limit) => ({

@@ -16,24 +16,30 @@ import ArrowIcon from '../ArrowIcon';
 import { pagesToShow } from './helpers';
 
 function Paginator(props) {
-  const { total, offset, limit, onClick, theme, showPageNums } = props;
+  const { total, onClick, theme, showPageNums } = props;
+  const { reqOffset, reqLimit, viewOffset, viewLimit } = props.apiParams;
+  const reqParams = { reqOffset, reqLimit };
   const pageNums = showPageNums
-    ? pagesToShow(total, offset, limit, onClick, theme)
+    ? pagesToShow(total, viewOffset, viewLimit, onClick, theme)
     : null;
 
   return (
     <ThemeProvider theme={theme}>
       <Wrapper>
         <Button
-          disabled={offset === 0}
-          handleRoute={() => onClick(Math.max(0, offset - limit), limit)}
+          disabled={viewOffset === 0}
+          handleRoute={() =>
+            onClick(Math.max(0, viewOffset - viewLimit), viewLimit, reqParams)
+          }
         >
           <ArrowIcon style={{ transform: 'rotate(180deg)' }} />
         </Button>
         {pageNums}
         <Button
-          disabled={offset >= total - limit}
-          handleRoute={() => onClick(offset + limit, limit)}
+          disabled={viewOffset >= total - viewLimit}
+          handleRoute={() =>
+            onClick(viewOffset + viewLimit, viewLimit, reqParams)
+          }
         >
           <ArrowIcon />
         </Button>
@@ -44,10 +50,9 @@ function Paginator(props) {
 
 Paginator.propTypes = {
   total: PropTypes.number,
-  offset: PropTypes.number,
-  limit: PropTypes.number,
   onClick: PropTypes.func,
   theme: PropTypes.object,
+  apiParams: PropTypes.object,
   showPageNums: PropTypes.bool,
 };
 

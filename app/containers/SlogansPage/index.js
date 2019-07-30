@@ -61,7 +61,7 @@ export function SlogansPage(props) {
   useInjectSaga({ key, saga });
 
   useEffect(() => {
-    const { reqOffset, reqLimit } = props;
+    const { reqOffset, reqLimit } = props.apiParams;
     onFetchSlogans(reqOffset, reqLimit);
   }, []);
 
@@ -86,8 +86,7 @@ export function SlogansPage(props) {
   };
 
   const paginatorProps = {
-    limit: apiParams.viewLimit,
-    offset: apiParams.viewOffset,
+    apiParams,
     total,
     step: 10,
     theme: paginatorTheme,
@@ -150,8 +149,8 @@ const mapStateToProps = createStructuredSelector({
 export function mapDispatchToProps(dispatch) {
   return {
     onFetchSlogans: (offset, limit) => dispatch(fetchSlogans(offset, limit)),
-    onUpdateViewSlogans: (offset, limit) =>
-      dispatch(updateViewSlogans(offset, limit)),
+    onUpdateViewSlogans: (offset, limit, reqParams) =>
+      dispatch(updateViewSlogans(offset, limit, reqParams)),
     onFravoriteSlogan: (id, text) => dispatch(favoriteSlogan(id, text)),
     onToggleFavorite: () => dispatch(toggleFavorites()),
   };
