@@ -12,7 +12,9 @@ You can get started by forking the repo and running `npm install`.
   - Handles bounds (disable `next` and `previous`)
   - Active page shown, page numbers adjust as one flips through slogan.
 
-- Asynchronous indicators:
+- Asynchronous loading:
+  - The front end will fetch 100 slogans at a time but only display 10.
+  - When the user is approaching the end of the fetched slogans, the client will fetch 100 more in the background.
   - I used the `<LoadingIndicator/>` component as a fallback for a number of containers and components.
   - When adding a slogan to the backend, message appears while sending (use network throttling to see).
   - Success message on add slogan success.
@@ -28,5 +30,4 @@ You can get started by forking the repo and running `npm install`.
 - Search functionality.
 - Give users the ability to email their favorite slogans to themselves or a friend.
 - "Favorite added" and "Favorite Removed" messages.
-- Refactor backend call and store to store more slogans on client and send less requests to the backend.
-- Mock api call for better test coverage in SlogansPage saga test
+- Mock api call for better test coverage in SlogansPage saga test.
