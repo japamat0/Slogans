@@ -7,12 +7,12 @@ exports[`<Footer /> should render and match the snapshot 1`] = `
   <section>
     <span>
       
-      Built by 
+      Built by Jason Matthias. 
       <a
         className="A-br8h0y-0 dwVNvo"
         href="https://github.com/japamat"
       >
-        Jason Matthias
+        Check out the code
       </a>
       .
     

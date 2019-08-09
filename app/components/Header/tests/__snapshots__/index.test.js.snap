@@ -11,29 +11,20 @@ exports[`<Header /> should render a div 1`] = `
       class="Span__StyledSpan-jqeibd-0 cTAaZP"
     >
       <span>
-        Slo-Go
+        Slogans
       </span>
     </span>
     <span
       class="Span__StyledSpan-jqeibd-0 cgXJsF"
     >
       <span>
-        Buzzwordy marketing slogans, to go!
+        Buzzwordy marketing slogans!
       </span>
     </span>
   </div>
   <div
     class="NavBar-sc-3b48xb-0 kREVGk"
   >
-    <a
-      class="HeaderLink-sc-1mtyaiv-0 eQrMTa"
-      href="/"
-      theme="[object Object]"
-    >
-      <span>
-        Home
-      </span>
-    </a>
     <a
       class="HeaderLink-sc-1mtyaiv-0 eQrMTa"
       href="/slogans"
